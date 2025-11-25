@@ -1,0 +1,52 @@
+class Animal {
+    private energia: number;
+    constructor(energiaInicial: number = 50) {
+        this.energia = energiaInicial;
+    }
+
+  
+    protected comer(quantidade: number): void {
+        this.energia += quantidade;
+        console.log(`+${quantidade} energia. Nível atual: ${this.energia}`);
+    }
+
+   
+    statusEnergia(): void {
+        console.log(`Nível de Energia do ${this.constructor.name}: **${this.energia}**`);
+    }
+}
+
+class Leao extends Animal {
+    constructor() {
+        super(80);
+    }
+
+    comer(): void {
+        const energiaCaça = 20;
+        const energiaGasta = 10;
+
+        console.log("\n--- Leão caçando ---");
+        
+        this.energia -= energiaGasta;
+        console.log(`-${energiaGasta} energia gasta na caçada.`);
+
+        super.comer(energiaCaça);
+        
+        console.log("--------------------");
+    }
+}
+
+class Passaro extends Animal {
+    constructor() {
+    
+        super(30);
+    }
+
+    
+    comer(): void {
+        const energiaAlimento = 5;
+        console.log("\n--- Pássaro se alimentando ---");
+        super.comer(energiaAlimento);
+        console.log("-----------------------------");
+    }
+}
